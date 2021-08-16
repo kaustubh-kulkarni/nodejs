@@ -12,9 +12,11 @@ const Post = require("../models/Post");
 //Get request
 router.get('/', (req, res) => 
         Post.findAll()
-            .then(posts => {
-                console.log(posts);
-                res.sendStatus(200);
+            .then(documents => {
+                res.status(200).json({
+                    message: "Posts fetched successfully!",
+                    posts: documents
+                });
             })
             .catch(err => console.log(err)));
 
